@@ -1,5 +1,8 @@
 body {
     background-image: url("assets/background\ image.jpg");
+    background-repeat: no-repeat;
+    background-position: right; 
+    background-color: black;
     color: seashell;
     font-family: 'Caveat', cursive;
     font-size: 50px;
