@@ -4,7 +4,7 @@
 <head>
     <title>Psychic Game</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
 
 <body>
@@ -59,27 +59,45 @@
             var userGuess = event.key;
             console.log(userGuess);
 
-
-
-
+            function reset() {
+                guessesLeft = 10;
+                YourGuessesSoFar = [];
+                computerGuess = letters[Math.floor(Math.random() * letters.length)];
+                console.log(computerGuess);
+            }
             // if (options.indexOf(userGuess) > -1) {
 
             if (userGuess === computerGuess) {
                 alert("YOU WIN!")
                 wins++;
                 guessesLeft = 9;
+                reset();
+
+
             }
             else if (guessesLeft === 0) {
-                alert("You Lose")
+                alert("You lose")
                 numGuesses = 9;
                 Losses++;
                 YourGuessesSoFar.push(userGuess);
+                reset();
+ 
             }
             else {
                 alert("Try again...")
                 guessesLeft--;
                 YourGuessesSoFar.push(userGuess);
             }
+
+
+            // if (guessesLeft === 0) {
+            //     confirm("Try again?");
+            //     alert("Great!  Let's Play!");
+            //     //    reset game here//
+            //     reset();
+            // } else {
+            //     alert("Until next time!");
+            // }
 
             var html = "<h1> The Psychic Game </h1>" +
                 "<p>Guess what letter I'm thinking of!</p>" +
@@ -89,6 +107,7 @@
                 "<p>Your Guesses so far: " + YourGuessesSoFar.join(", ") + "</p>";
 
             document.querySelector("#game").innerHTML = html;
+
         }
 
 
